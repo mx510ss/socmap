@@ -11,6 +11,8 @@
 .mtj.tmp/
 
 .idea/
+*.iml
+*.lst
 
 # Package Files #
 *.jar
