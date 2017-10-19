@@ -9,8 +9,12 @@ import java.util.List;
 
 public class POIRepoIpml implements POIRepository {
 
-    @Autowired
     private JPAPOIRepository repository;
+
+    @Autowired
+    public POIRepoIpml(JPAPOIRepository repository){
+        this.repository = repository;
+    }
 
 
     public List<POI> getByBounds(double X1, double Y1, double X2, double Y2) {
