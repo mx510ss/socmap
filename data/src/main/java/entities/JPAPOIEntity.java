@@ -1,6 +1,4 @@
-package repository.entities;
-
-import entities.POI;
+package entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,11 +30,18 @@ public class JPAPOIEntity {
     protected JPAPOIEntity(){}
 
     public JPAPOIEntity (POI poi){
-        //objects deep copy
+        this.id = poi.getId();
+        this.name = poi.getName();
+        this.X = poi.getX();
+        this.Y = poi.getY();
     }
 
     public POI toModel() {
-        //TODO - convert to poi and return
-        return null;
+       POI poi = new POI();
+       poi.setId(id);
+       poi.setName(name);
+       poi.setX(X);
+       poi.setY(Y);
+       return poi;
     }
 }

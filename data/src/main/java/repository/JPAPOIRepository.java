@@ -3,7 +3,7 @@ package repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import repository.entities.JPAPOIEntity;
+import entities.JPAPOIEntity;
 
 import java.util.List;
 
