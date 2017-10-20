@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class HeatPoint {
 
-    private static double radius = 0.00013;
+    private static double radius = 0.0013;
 
     private double x;
 

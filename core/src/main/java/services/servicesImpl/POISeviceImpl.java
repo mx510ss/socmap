@@ -1,5 +1,6 @@
 package services.servicesImpl;
 
+import entities.HeatMap;
 import entities.HeatPoint;
 import entities.POI;
 import repository.POIRepository;
@@ -32,12 +33,16 @@ public class POISeviceImpl implements POIService{
 
     }
 
-    public void buildPoint(HeatPoint point) {
-        double[] crd = point.getSquareByRadius();
-        List<POI>list = repository.getByBounds(crd[0], crd[1], crd[2], crd[3]);
-        Map<String, Object> attributes = new HashMap<String, Object>();
-        attributes.put("count", list.size());
-       //TODO - set attributes for HeatPoint to build heatmap
-        point.setAttributes(attributes);
+    public HeatMap build() {
+        HeatMap map = HeatMap.coreBuild();
+        for (HeatPoint point : map.getMap()){
+            double[] crd = point.getSquareByRadius();
+            List<POI> list = repository.getByBounds(crd[0], crd[1], crd[2], crd[3]);
+            Map<String, Object> attributes = new HashMap<String, Object>();
+            attributes.put("count", list.size());
+            point.setAttributes(attributes);
+
+        }
+        return map;
     }
 }

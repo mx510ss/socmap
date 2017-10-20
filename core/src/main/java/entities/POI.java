@@ -4,7 +4,6 @@ package entities;
 
 public class POI {
 
-	private static double radius = 0.00013;
 
 	private long id;
 	
