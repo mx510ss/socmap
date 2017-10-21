@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class HeatPoint {
@@ -17,6 +18,7 @@ public class HeatPoint {
     public HeatPoint(double x, double y) {
         this.x = x;
         this.y = y;
+        attributes = new HashMap<String, Object>();
     }
 
     public double getX() {
@@ -39,17 +41,16 @@ public class HeatPoint {
         return attributes;
     }
 
-    public void setAttributes(Map<String, Object> attributes) {
-        this.attributes = attributes;
+    public void addAttributes(String key, Object value) {
+       attributes.put(key, value);
     }
 
-    public double[] getSquareByRadius(){
-        double x1, x2, y1, y2;
-        x1 = x - radius;
-        x2 =x + radius;
-        y1 = y - radius;
-        y2 = y + radius;
-        double[] ans = {x1, y1, x2, y2};
-        return  ans;
+    public double[] getSquareByRadius() {
+        double[] ans = new double[4];
+        ans[0] = x - radius;
+        ans[2] = x + radius;
+        ans[1] = y - radius;
+        ans[3] = y + radius;
+        return ans;
     }
 }

@@ -8,5 +8,5 @@ public interface POIService {
 
     void loadAndStore();
 
-    HeatMap build();
+    HeatMap build(double X1, double X2, double Y1, double Y2);
 }

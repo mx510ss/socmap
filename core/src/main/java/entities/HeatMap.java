@@ -23,10 +23,10 @@ public class HeatMap {
         this.map = map;
     }
 
-    public static HeatMap coreBuild(){
+    public static HeatMap coreBuild(double X1, double X2, double Y1, double Y2){
         List<HeatPoint> list = new LinkedList<HeatPoint>();
-        for(double x = POISeviceImpl.cityX1; x <= POISeviceImpl.cityX2; x+= 0.0001){
-            for(double y = POISeviceImpl.cityY1; y <= POISeviceImpl.cityY2; y += 0.0001){
+        for(double x = X1; x <= X2; x+= 0.0001){
+            for(double y = Y1; y <= Y2; y += 0.0001){
                 list.add(new HeatPoint(x, y));
             }
         }

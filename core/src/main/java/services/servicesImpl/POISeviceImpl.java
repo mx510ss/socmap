@@ -33,15 +33,12 @@ public class POISeviceImpl implements POIService{
 
     }
 
-    public HeatMap build() {
-        HeatMap map = HeatMap.coreBuild();
+    public HeatMap build(double X1, double X2, double Y1, double Y2) {
+        HeatMap map = HeatMap.coreBuild(X1, X2, Y1, Y2);
         for (HeatPoint point : map.getMap()){
             double[] crd = point.getSquareByRadius();
             List<POI> list = repository.getByBounds(crd[0], crd[1], crd[2], crd[3]);
-            Map<String, Object> attributes = new HashMap<String, Object>();
-            attributes.put("count", list.size());
-            point.setAttributes(attributes);
-
+            point.addAttributes("count", list.size());
         }
         return map;
     }
