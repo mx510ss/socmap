@@ -1,6 +1,7 @@
 package entities;
 
 
+import enums.Types;
 
 public class POI {
 
@@ -12,13 +13,17 @@ public class POI {
 	private double X;
 	
 	private double Y;
+
+	private Types objectType;
+
 	public POI(){}
-	
-	public POI(long id, String name, double X, double Y){
+
+	public POI(long id, String name, double X, double Y, Types objectType){
 		this.setId(id);
 		this.setName(name);
 		this.setX(X);
 		this.setY(Y);
+		this.setObjectType(objectType);
 	}
 
 	public long getId() {
@@ -51,6 +56,14 @@ public class POI {
 
 	public void setY(double y) {
 		Y = y;
+	}
+
+	public Types getObjectType() {
+		return objectType;
+	}
+
+	public void setObjectType(Types objectType) {
+		this.objectType = objectType;
 	}
 
 
