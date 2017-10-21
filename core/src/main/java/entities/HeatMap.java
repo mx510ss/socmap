@@ -9,7 +9,7 @@ import java.util.List;
 public class HeatMap {
 
     private List<HeatPoint> map;
-
+    private static double step = 0.0001;
 
     private HeatMap(List<HeatPoint> list){
         map = list;
@@ -25,8 +25,8 @@ public class HeatMap {
 
     public static HeatMap coreBuild(double X1, double X2, double Y1, double Y2){
         List<HeatPoint> list = new LinkedList<HeatPoint>();
-        for(double x = X1; x <= X2; x+= 0.0001){
-            for(double y = Y1; y <= Y2; y += 0.0001){
+        for(double x = X1; x <= X2; x+= step){
+            for(double y = Y1; y <= Y2; y += step){
                 list.add(new HeatPoint(x, y));
             }
         }
