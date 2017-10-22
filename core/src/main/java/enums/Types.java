@@ -1,8 +1,8 @@
 package enums;
 
 public enum Types {
-    education,
-    medicine,
-    shop;
+    EDUCATION,
+    MEDICINE,
+    SHOP;
 
 }
