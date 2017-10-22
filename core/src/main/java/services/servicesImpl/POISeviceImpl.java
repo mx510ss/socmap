@@ -7,17 +7,16 @@ import repository.POIRepository;
 import services.POIService;
 import services.POISourceService;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 public class POISeviceImpl implements POIService{
 
-    public static final double cityX1 = 23.7;
-    public static final double cityX2 = 24.0;
-    public static final double cityY1 = 53.5;
-    public static final double cityY2 = 53.7;
-
+    public static double cityX1, cityX2, cityY1, cityY2;
     private final POIRepository repository;
 
     private final POISourceService sourceService;
@@ -25,6 +24,18 @@ public class POISeviceImpl implements POIService{
     public POISeviceImpl(POIRepository repository, POISourceService sourceService) {
         this.repository = repository;
         this.sourceService = sourceService;
+        Properties properties = new Properties();
+        InputStream inputStream = null;
+        inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");
+        try {
+            properties.load(inputStream);
+            cityX1 = Double.parseDouble(properties.getProperty("cityX1"));
+            cityX2 = Double.parseDouble(properties.getProperty("cityX2"));
+            cityY1 = Double.parseDouble(properties.getProperty("cityY1"));
+            cityY2 = Double.parseDouble(properties.getProperty("cityY2"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadAndStore() {
