@@ -10,9 +10,9 @@ public class POI {
 	
 	private String name;
 
-	private double X;
+	private double x;
 	
-	private double Y;
+	private double y;
 
 	private POITypes objectType;
 
@@ -43,19 +43,19 @@ public class POI {
 	}
 
 	public double getX() {
-		return X;
+		return x;
 	}
 
 	public void setX(double x) {
-		X = x;
+		this.x = x;
 	}
 
 	public double getY() {
-		return Y;
+		return y;
 	}
 
 	public void setY(double y) {
-		Y = y;
+		this.y = y;
 	}
 
 	public POITypes getObjectType() {

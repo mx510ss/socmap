@@ -7,5 +7,5 @@ public interface POIService {
 
     void loadAndStore();
 
-    HeatMap build(double X1, double X2, double Y1, double Y2, POITypes type);
+    HeatMap build(double x1, double x2, double y1, double y2, POITypes type);
 }
