@@ -1,7 +1,5 @@
 package model;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 import entities.POI;
 
@@ -15,7 +13,7 @@ public class Element {
     @SerializedName("lon")
     private double mLon;
     @SerializedName("tags")
-    Tags tags;
+    private Tags tags;
 
     public String getmType() {
         return mType;

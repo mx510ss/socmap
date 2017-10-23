@@ -9,6 +9,8 @@ import java.io.InputStreamReader;
 
 public class TagsConfig {
 
+    public static final String URL_TAGS_JSON = "../tags.json";
+
     @SerializedName("tags")
     private String[] tags;
 
