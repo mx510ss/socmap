@@ -21,7 +21,7 @@ public class HeatMap {
         inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");
         try {
             properties.load(inputStream);
-            step = Double.parseDouble(properties.getProperty("radius"));
+            step = Double.parseDouble(properties.getProperty("step"));
         } catch (IOException e) {
             e.printStackTrace();
         }
