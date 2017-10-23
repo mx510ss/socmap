@@ -3,6 +3,7 @@ package services.servicesImpl;
 import entities.HeatMap;
 import entities.HeatPoint;
 import entities.POI;
+import enums.POITypes;
 import repository.POIRepository;
 import services.POIService;
 import services.POISourceService;
@@ -44,11 +45,11 @@ public class POISeviceImpl implements POIService{
 
     }
 
-    public HeatMap build(double X1, double X2, double Y1, double Y2) {
+    public HeatMap build(double X1, double X2, double Y1, double Y2, POITypes type) {
         HeatMap map = HeatMap.coreBuild(X1, X2, Y1, Y2);
         for (HeatPoint point : map.getMap()){
             double[] crd = point.getSquareByRadius();
-            List<POI> list = repository.getByBounds(crd[0], crd[1], crd[2], crd[3]);
+            List<POI> list = repository.getByBounds(crd[0], crd[1], crd[2], crd[3], type);
             point.addAttributes("count", list.size());
         }
         return map;
