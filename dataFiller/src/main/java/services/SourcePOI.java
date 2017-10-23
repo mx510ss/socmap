@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SourcePOI implements POISourceService {
+
     private HttpClient httpClient;
     private TagsConfig tagsConfig;
 
@@ -25,7 +26,7 @@ public class SourcePOI implements POISourceService {
     private void buildTagsConfig(){
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = new FileInputStream(new File(SourcePOI.class.getResource("../tags.json").getPath()));
+            fileInputStream = new FileInputStream(new File(SourcePOI.class.getResource(TagsConfig.URL_TAGS_JSON).getPath()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -35,8 +36,6 @@ public class SourcePOI implements POISourceService {
             e.printStackTrace();
         }
     }
-
-
 
     public List<POI> buildQuery(double x1, double y1, double x2, double y2) {
         final ElementsList elementsList = new ElementsList();
