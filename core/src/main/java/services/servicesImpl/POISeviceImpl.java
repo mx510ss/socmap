@@ -3,6 +3,7 @@ package services.servicesImpl;
 import entities.HeatMap;
 import entities.HeatPoint;
 import entities.POI;
+import entities.factories.DefaultHeatMapFactory;
 import enums.POITypes;
 import repository.POIRepository;
 import services.POIService;
@@ -17,36 +18,31 @@ import java.util.Properties;
 
 public class POISeviceImpl implements POIService{
 
-    public static double cityX1, cityX2, cityY1, cityY2;
+    public double cityX1, cityX2, cityY1, cityY2;
     private final POIRepository repository;
-
     private final POISourceService sourceService;
+    private final DefaultHeatMapFactory factory;
 
-    public POISeviceImpl(POIRepository repository, POISourceService sourceService) {
+    public POISeviceImpl(POIRepository repository, POISourceService sourceService, DefaultHeatMapFactory factory) throws Exception {
         this.repository = repository;
         this.sourceService = sourceService;
+        this.factory = factory;
         Properties properties = new Properties();
-        InputStream inputStream = null;
-        inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");
-        try {
-            properties.load(inputStream);
-            cityX1 = Double.parseDouble(properties.getProperty("cityX1"));
-            cityX2 = Double.parseDouble(properties.getProperty("cityX2"));
-            cityY1 = Double.parseDouble(properties.getProperty("cityY1"));
-            cityY2 = Double.parseDouble(properties.getProperty("cityY2"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");;
+        properties.load(inputStream);
+        this.cityX1 = Double.parseDouble(properties.getProperty("cityX1"));
+        this.cityX2 = Double.parseDouble(properties.getProperty("cityX2"));
+        this.cityY1 = Double.parseDouble(properties.getProperty("cityY1"));
+        this.cityY2 = Double.parseDouble(properties.getProperty("cityY2"));
     }
 
     public void loadAndStore() {
        List<POI> list = sourceService.buildQuery(cityX1, cityY1, cityX2, cityY2);
        repository.save(list);
-
     }
 
     public HeatMap build(double X1, double X2, double Y1, double Y2, POITypes type) {
-        HeatMap map = HeatMap.coreBuild(X1, X2, Y1, Y2);
+        HeatMap map = this.factory.getInstance(X1, X2, Y1, Y2);
         for (HeatPoint point : map.getMap()){
             double[] crd = point.getSquareByRadius();
             List<POI> list = repository.getByBounds(crd[0], crd[1], crd[2], crd[3], type);

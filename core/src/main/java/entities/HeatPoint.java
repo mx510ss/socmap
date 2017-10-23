@@ -1,14 +1,11 @@
 package entities;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 public class HeatPoint {
 
-    private static double radius;
+    private double radius;
 
     private double x;
 
@@ -18,19 +15,11 @@ public class HeatPoint {
 
     public HeatPoint(){}
 
-    public HeatPoint(double x, double y) {
+    HeatPoint(double x, double y, double pointRadius) {
         this.x = x;
         this.y = y;
-        attributes = new HashMap<String, Object>();
-        Properties properties = new Properties();
-        InputStream inputStream = null;
-        inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");
-        try {
-            properties.load(inputStream);
-            radius = Double.parseDouble(properties.getProperty("radius"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.attributes = new HashMap<String, Object>();
+        this.radius = pointRadius;
     }
 
     public double getX() {
