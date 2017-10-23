@@ -42,6 +42,7 @@ public class Element {
         poi.setX(mLat);
         poi.setY(mLon);
         poi.setName(tags.getName());
+        //TODO setType.
         return poi;
     }
 }
