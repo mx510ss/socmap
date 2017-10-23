@@ -1,9 +1,8 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import enums.POITypes;
+
+import javax.persistence.*;
 
 
 @Entity
@@ -23,8 +22,12 @@ public class JPAPOIEntity {
     @Column(name = "Y-crd")
     private double Y;
 
+    @Column(name = "Type")
+    @Enumerated(EnumType.STRING)
+    private POITypes type;
+
     @Column(name = "Discription")
-    private String Disctription;
+    private String disctription;
 
 
     protected JPAPOIEntity(){}
@@ -34,6 +37,7 @@ public class JPAPOIEntity {
         this.name = poi.getName();
         this.X = poi.getX();
         this.Y = poi.getY();
+        this.type = poi.getObjectType();
     }
 
     public POI toModel() {
@@ -42,6 +46,7 @@ public class JPAPOIEntity {
        poi.setName(name);
        poi.setX(X);
        poi.setY(Y);
+       poi.setObjectType(type);
        return poi;
     }
 }
