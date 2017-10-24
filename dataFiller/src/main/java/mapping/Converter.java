@@ -1,16 +1,16 @@
 package mapping;
 
-import enums.Types;
+import enums.POITypes;
 
 import java.util.*;
 
 public class Converter {
-    private static Map<Types, List<String>> map = new Hashtable<Types, List<String>>();
+    private static Map<POITypes, List<String>> map = new Hashtable<POITypes, List<String>>();
     static {
-        map.put(Types.EDUCATION, Arrays.asList("university", "school", "kindergarten"));
-        map.put(Types.MEDICINE, Arrays.asList("hospital"));
+        map.put(POITypes.EDUCATION, Arrays.asList("university", "school", "kindergarten"));
+        map.put(POITypes.MEDICINE, Arrays.asList("hospital"));
     }
-    public static List<String> getListTags(Types type){
+    public static List<String> getListTags(POITypes type){
         return map.get(type);
     }
 }

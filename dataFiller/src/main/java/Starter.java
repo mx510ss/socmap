@@ -1,8 +1,7 @@
 import entities.POI;
-import enums.Types;
-import mapping.Converter;
+import enums.POITypes;
 import services.POISourceService;
-import services.SourcePOI;
+import services.OSMSourceService;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,8 +11,8 @@ import java.util.List;
 public class Starter {
     public static void main(String[] args) throws IOException {
         //(53.6, 23.7, 53.755, 24);
-        POISourceService poiSourceService = new SourcePOI();
+        POISourceService poiSourceService = new OSMSourceService();
         List<POI> poiList = poiSourceService.buildQuery( 53.6, 23.7, 53.755, 24);
-        System.out.println(Types.EDUCATION);
+        System.out.println(POITypes.EDUCATION);
     }
 }
