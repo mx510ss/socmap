@@ -13,7 +13,7 @@ public class JPAPOIAdapter implements POIRepository {
 
     private JPAPOIRepository repository;
 
-    @Autowired
+
     public JPAPOIAdapter(JPAPOIRepository repository){
         this.repository = repository;
     }
@@ -21,10 +21,9 @@ public class JPAPOIAdapter implements POIRepository {
 
     public List<POI> getByBounds(double X1, double Y1, double X2, double Y2, POITypes type) {
         List<JPAPOIEntity> list = repository.getByBounds(X1, Y1, X2, Y2, type);
-        List<POI> resultList = new ArrayList<POI>();
+        List<POI> resultList = new ArrayList<POI>(list.size());
         for(JPAPOIEntity i : list){
-            POI tmp = i.toModel();
-            resultList.add(tmp);
+            resultList.add(i.toModel());
         }
         return resultList;
     }
@@ -32,8 +31,7 @@ public class JPAPOIAdapter implements POIRepository {
     public void save(Collection<POI> poi) {
         List<JPAPOIEntity> list = new ArrayList<JPAPOIEntity>(poi.size());
         for(POI i : poi){
-            JPAPOIEntity tmp = new JPAPOIEntity(i);
-            list.add(tmp);
+            list.add( new JPAPOIEntity(i));
         }
         repository.save(list);
     }
