@@ -36,8 +36,8 @@ public class POISeviceImpl implements POIService{
         this.cityY2 = Double.parseDouble(properties.getProperty("cityY2"));
     }
 
-    public void loadAndStore() {
-       List<POI> list = sourceService.buildQuery(cityX1, cityY1, cityX2, cityY2);
+    public void loadAndStore(POITypes type) {
+       List<POI> list = sourceService.buildQuery(cityX1, cityY1, cityX2, cityY2, type);
        repository.save(list);
     }
 

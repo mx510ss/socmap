@@ -18,11 +18,11 @@ public class POI {
 
 	public POI(){}
 
-	public POI(long id, String name, double X, double Y, POITypes objectType){
+	public POI(long id, String name, double x, double y, POITypes objectType){
 		this.setId(id);
 		this.setName(name);
-		this.setX(X);
-		this.setY(Y);
+		this.setX(x);
+		this.setY(y);
 		this.setObjectType(objectType);
 	}
 

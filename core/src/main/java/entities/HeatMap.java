@@ -8,12 +8,12 @@ public class HeatMap {
     private List<HeatPoint> map;
     private double step;
 
-    public HeatMap(double X1, double X2, double Y1, double Y2, double step, double pointRadius){
+    public HeatMap(double x1, double x2, double y1, double y2, double step, double pointRadius){
         this.map = new LinkedList<HeatPoint>();
         this.step = step;
 
-        for(double x = X1; x <= X2; x+= step){
-            for(double y = Y1; y <= Y2; y += step){
+        for(double x = x1; x <= x2; x+= step){
+            for(double y = y1; y <= y2; y += step){
                 map.add(new HeatPoint(x, y, pointRadius));
             }
         }
