@@ -9,11 +9,8 @@ import repository.POIRepository;
 import services.POIService;
 import services.POISourceService;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 public class POISeviceImpl implements POIService{
@@ -28,7 +25,7 @@ public class POISeviceImpl implements POIService{
         this.sourceService = sourceService;
         this.factory = factory;
         Properties properties = new Properties();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");;
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");
         properties.load(inputStream);
         this.cityX1 = Double.parseDouble(properties.getProperty("cityX1"));
         this.cityX2 = Double.parseDouble(properties.getProperty("cityX2"));
