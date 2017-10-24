@@ -30,7 +30,7 @@ public class JPAPOIAdapter implements POIRepository {
     }
 
     public void save(Collection<POI> poi) {
-        List<JPAPOIEntity> list = new ArrayList<JPAPOIEntity>();
+        List<JPAPOIEntity> list = new ArrayList<JPAPOIEntity>(poi.size());
         for(POI i : poi){
             JPAPOIEntity tmp = new JPAPOIEntity(i);
             list.add(tmp);

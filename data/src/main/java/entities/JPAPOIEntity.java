@@ -16,17 +16,17 @@ public class JPAPOIEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "X-crd")
-    private double X;
+    @Column(name = "x")
+    private double x;
 
-    @Column(name = "Y-crd")
-    private double Y;
+    @Column(name = "y")
+    private double y;
 
-    @Column(name = "Type")
+    @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private POITypes type;
 
-    @Column(name = "Discription")
+    @Column(name = "discription")
     private String disctription;
 
 
@@ -35,8 +35,8 @@ public class JPAPOIEntity {
     public JPAPOIEntity (POI poi){
         this.id = poi.getId();
         this.name = poi.getName();
-        this.X = poi.getX();
-        this.Y = poi.getY();
+        this.x = poi.getX();
+        this.y = poi.getY();
         this.type = poi.getObjectType();
     }
 
@@ -44,8 +44,8 @@ public class JPAPOIEntity {
        POI poi = new POI();
        poi.setId(id);
        poi.setName(name);
-       poi.setX(X);
-       poi.setY(Y);
+       poi.setX(x);
+       poi.setY(y);
        poi.setObjectType(type);
        return poi;
     }
