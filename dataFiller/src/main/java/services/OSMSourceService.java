@@ -4,21 +4,19 @@ import api.Api;
 import configs.TagsConfig;
 import entities.POI;
 import httpClient.HttpClient;
-import model.Element;
 import model.ElementsList;
 import parser.ListElementsParser;
 import parser.TagsConfigParser;
 
 import java.io.*;
-import java.util.LinkedList;
 import java.util.List;
 
-public class SourcePOI implements POISourceService {
+public class OSMSourceService implements POISourceService {
 
     private HttpClient httpClient;
     private TagsConfig tagsConfig;
 
-    public SourcePOI() {
+    public OSMSourceService() {
         httpClient = new HttpClient();
         buildTagsConfig();
     }
@@ -26,7 +24,7 @@ public class SourcePOI implements POISourceService {
     private void buildTagsConfig(){
         FileInputStream fileInputStream = null;
         try {
-            fileInputStream = new FileInputStream(new File(SourcePOI.class.getResource(TagsConfig.URL_TAGS_JSON).getPath()));
+            fileInputStream = new FileInputStream(new File(OSMSourceService.class.getResource(TagsConfig.URL_TAGS_JSON).getPath()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
