@@ -11,6 +11,7 @@ import parser.TagsConfigParser;
 import java.io.*;
 import java.util.List;
 
+
 public class OSMSourceService implements POISourceService {
 
     private HttpClient httpClient;
