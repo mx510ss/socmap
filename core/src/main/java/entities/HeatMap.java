@@ -23,4 +23,12 @@ public class HeatMap {
         return map;
     }
 
+    public int getMaxValue(){
+        int max = 0;
+        for(HeatPoint i : map){
+            max = Math.max(max,Integer.parseInt(i.getAttributes().get("count").toString()));
+        }
+        return max;
+    }
+
 }
