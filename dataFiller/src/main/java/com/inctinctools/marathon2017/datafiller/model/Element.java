@@ -1,4 +1,4 @@
-package model;
+package com.inctinctools.marathon2017.datafiller.model;
 
 import com.google.gson.annotations.SerializedName;
 import entities.POI;

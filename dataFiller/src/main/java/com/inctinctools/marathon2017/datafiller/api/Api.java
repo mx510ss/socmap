@@ -1,4 +1,4 @@
-package api;
+package com.inctinctools.marathon2017.datafiller.api;
 
 public class Api {
     //private static final String GRODNO_COORDINATES = "(53.5,23.7,53.7,24)";

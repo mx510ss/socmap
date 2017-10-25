@@ -1,7 +1,9 @@
+package com.inctinctools.marathon2017.datafiller;
+
 import entities.POI;
 import enums.POITypes;
 import services.POISourceService;
-import services.OSMSourceService;
+import com.inctinctools.marathon2017.datafiller.services.OSMSourceService;
 
 import java.io.IOException;
 import java.util.List;

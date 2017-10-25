@@ -1,12 +1,13 @@
-package services;
+package com.inctinctools.marathon2017.datafiller.services;
 
-import api.Api;
-import configs.TagsConfig;
+import com.inctinctools.marathon2017.datafiller.api.Api;
+import com.inctinctools.marathon2017.datafiller.configs.TagsConfig;
+import com.inctinctools.marathon2017.datafiller.httpClient.HttpClient;
+import com.inctinctools.marathon2017.datafiller.model.ElementsList;
+import com.inctinctools.marathon2017.datafiller.parser.ListElementsParser;
+import com.inctinctools.marathon2017.datafiller.parser.TagsConfigParser;
 import entities.POI;
-import httpClient.HttpClient;
-import model.ElementsList;
-import parser.ListElementsParser;
-import parser.TagsConfigParser;
+import services.POISourceService;
 
 import java.io.*;
 import java.util.List;

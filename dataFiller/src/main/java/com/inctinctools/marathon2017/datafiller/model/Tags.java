@@ -1,4 +1,4 @@
-package model;
+package com.inctinctools.marathon2017.datafiller.model;
 
 public class Tags {
     private String name;

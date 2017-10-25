@@ -1,4 +1,4 @@
-package mapping;
+package com.inctinctools.marathon2017.datafiller.mapping;
 
 import enums.POITypes;
 

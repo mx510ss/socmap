@@ -1,7 +1,7 @@
-package parser;
+package com.inctinctools.marathon2017.datafiller.parser;
 import com.google.gson.Gson;
-import model.Element;
-import model.ResponseServer;
+import com.inctinctools.marathon2017.datafiller.model.Element;
+import com.inctinctools.marathon2017.datafiller.model.ResponseServer;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;

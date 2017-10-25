@@ -1,7 +1,7 @@
-package parser;
+package com.inctinctools.marathon2017.datafiller.parser;
 
 import com.google.gson.Gson;
-import configs.TagsConfig;
+import com.inctinctools.marathon2017.datafiller.configs.TagsConfig;
 
 import java.io.IOException;
 import java.io.InputStream;

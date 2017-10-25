@@ -1,4 +1,4 @@
-package configs;
+package com.inctinctools.marathon2017.datafiller.configs;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;

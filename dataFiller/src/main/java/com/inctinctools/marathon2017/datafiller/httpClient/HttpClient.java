@@ -1,4 +1,4 @@
-package httpClient;
+package com.inctinctools.marathon2017.datafiller.httpClient;
 
 import java.io.IOException;
 import java.io.InputStream;
