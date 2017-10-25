@@ -2,13 +2,13 @@ package com.inctinctools.marathon2017.socmap.restapi.entity;
 
 import java.util.List;
 
-public class MapParams {
+public class MapDTO {
 
     private int maxVal;
 
     private List<PointData> data;
 
-    public MapParams(int maxVal, List<PointData> data) {
+    public MapDTO(int maxVal, List<PointData> data) {
         this.maxVal = maxVal;
         this.data = data;
     }

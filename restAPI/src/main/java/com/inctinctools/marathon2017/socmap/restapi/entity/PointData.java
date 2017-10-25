@@ -4,9 +4,9 @@ public class PointData {
 
     private double x;
     private double y;
-    private double value;
+    private int value;
 
-    public PointData(double x, double y, double value) {
+    public PointData(double x, double y, int value) {
         this.x = x;
         this.y = y;
         this.value = value;
@@ -28,11 +28,11 @@ public class PointData {
         this.y = y;
     }
 
-    public double getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
