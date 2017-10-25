@@ -1,6 +1,6 @@
 package services;
 
-import entities.HeatMap;
+import com.inctinctools.marathon2017.socmap.data.entities.HeatMap;
 import enums.POITypes;
 
 public interface POIService {

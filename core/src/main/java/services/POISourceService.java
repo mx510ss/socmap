@@ -1,6 +1,6 @@
 package services;
 
-import entities.POI;
+import com.inctinctools.marathon2017.socmap.data.entities.POI;
 import enums.POITypes;
 
 import java.util.List;
