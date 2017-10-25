@@ -1,4 +1,4 @@
-package entity;
+package com.inctinctools.marathon2017.socmap.restapi.entity;
 
 public class PointData {
 
