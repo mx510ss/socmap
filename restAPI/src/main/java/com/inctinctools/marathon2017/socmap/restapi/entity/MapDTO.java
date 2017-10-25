@@ -1,5 +1,9 @@
 package com.inctinctools.marathon2017.socmap.restapi.entity;
 
+import com.inctinctools.marathon2017.socmap.data.entities.HeatMap;
+import com.inctinctools.marathon2017.socmap.data.entities.HeatPoint;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapDTO {
@@ -8,9 +12,14 @@ public class MapDTO {
 
     private List<PointData> data;
 
-    public MapDTO(int maxVal, List<PointData> data) {
-        this.maxVal = maxVal;
-        this.data = data;
+    public MapDTO(HeatMap map) {
+        this.maxVal = map.getMaxValue();
+        List<PointData> list = new ArrayList<PointData>(map.getMap().size());
+        for(HeatPoint i : map.getMap()){
+            int objectCount = Integer.parseInt(i.getAttributes().get("count").toString());
+            list.add(new PointData(i.getX(), i.getY(), objectCount));
+        }
+        this.data = list;
     }
 
     public int getMaxVal() {
