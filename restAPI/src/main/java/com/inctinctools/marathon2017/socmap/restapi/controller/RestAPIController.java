@@ -21,19 +21,12 @@ public class RestAPIController {
     @Autowired
     POIService service;
 
-    @RequestMapping(value = "/buildMap", method = RequestMethod.GET)
+    @RequestMapping(value = "/heatmap", method = RequestMethod.GET)
     public ResponseEntity getHeatMap(@RequestParam("x1") double x1, @RequestParam("y1") double y1,
                                      @RequestParam("x2") double x2, @RequestParam("y2") double y2,
                                      @RequestParam("type") POITypes type){
         HeatMap map = service.build(x1,x2,y1,y2, type);
-        int maxVal = map.getMaxValue();
-        List<PointData> list = new ArrayList<PointData>(map.getMap().size());
-        for(HeatPoint i : map.getMap()){
-            int objectCount = Integer.parseInt(i.getAttributes().get("count").toString());
-            list.add(new PointData(i.getX(), i.getY(), objectCount));
-        }
-        MapDTO params = new MapDTO(maxVal, list);
-        return new ResponseEntity(params, HttpStatus.OK);
+        return new ResponseEntity( new MapDTO(map), HttpStatus.OK);
     }
 
 }
