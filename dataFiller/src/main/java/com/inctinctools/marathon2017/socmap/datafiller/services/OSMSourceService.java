@@ -1,12 +1,11 @@
 package com.inctinctools.marathon2017.socmap.datafiller.services;
 
+import com.inctinctools.marathon2017.socmap.data.entities.POI;
 import com.inctinctools.marathon2017.socmap.datafiller.api.Api;
 import com.inctinctools.marathon2017.socmap.datafiller.httpClient.RestClient;
 import com.inctinctools.marathon2017.socmap.datafiller.mapping.Converter;
 import com.inctinctools.marathon2017.socmap.datafiller.model.Element;
 import com.inctinctools.marathon2017.socmap.datafiller.model.ElementsList;
-import com.inctinctools.marathon2017.socmap.data.entities.POI;
-import com.inctinctools.marathon2017.socmap.datafiller.model.ResponseServer;
 import enums.POITypes;
 import org.springframework.stereotype.Service;
 import services.POISourceService;
