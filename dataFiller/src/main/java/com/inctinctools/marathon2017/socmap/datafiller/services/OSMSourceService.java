@@ -1,40 +1,44 @@
 package com.inctinctools.marathon2017.socmap.datafiller.services;
 
-import com.inctinctools.marathon2017.socmap.datafiller.httpClient.HttpClient;
+import com.inctinctools.marathon2017.socmap.datafiller.api.Api;
+import com.inctinctools.marathon2017.socmap.datafiller.httpClient.RestClient;
+import com.inctinctools.marathon2017.socmap.datafiller.mapping.Converter;
+import com.inctinctools.marathon2017.socmap.datafiller.model.Element;
 import com.inctinctools.marathon2017.socmap.datafiller.model.ElementsList;
 import com.inctinctools.marathon2017.socmap.data.entities.POI;
+import com.inctinctools.marathon2017.socmap.datafiller.model.ResponseServer;
 import enums.POITypes;
 import org.springframework.stereotype.Service;
 import services.POISourceService;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
 @Service
 public class OSMSourceService implements POISourceService {
 
-    private HttpClient httpClient;
+    private RestClient restClient;
 
     public OSMSourceService() {
-        httpClient = new HttpClient();
-    }
-
-    public List<POI> buildQuery(double x1, double y1, double x2, double y2) {
-        final ElementsList elementsList = new ElementsList();
-       // try {
-       //     for (String tag : tagsConfig.getTags())
-       //     httpClient.request(Api.buildRequestNode(tag, x1, y1, x2, y2), new HttpClient.ResponseListner() {
-       //         public void onResponse(InputStream stream) {
-       //             elementsList.concatList(new ListElementsParser(stream).parse());
-       //         }
-       //     });
-       // } catch (IOException e) {
-       //     e.printStackTrace();
-       // }
-        return elementsList.getListPOI();
+        restClient = new RestClient();
     }
 
     public List<POI> buildQuery(double x1, double y1, double x2, double y2, POITypes type) {
-        return null;
+        final ElementsList elementsList = new ElementsList();
+        for (String tag : Converter.getListTags(type))
+            try {
+                List<Element> elements = restClient.get(Api.buildRequestNode(tag, x1, y1, x2, y2)).getElements();
+                for (Element el : elements
+                        ) {
+                    el.setPoiTypes(type);
+                }
+                elementsList.concatList(elements);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        return elementsList.getListPOI();
     }
+
+
 }
