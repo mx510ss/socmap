@@ -1,19 +1,16 @@
 package services.servicesImpl;
 
-import entities.HeatMap;
-import entities.HeatPoint;
-import entities.POI;
-import entities.factories.DefaultHeatMapFactory;
+import com.inctinctools.marathon2017.socmap.data.entities.HeatMap;
+import com.inctinctools.marathon2017.socmap.data.entities.HeatPoint;
+import com.inctinctools.marathon2017.socmap.data.entities.POI;
+import com.inctinctools.marathon2017.socmap.data.entities.factories.DefaultHeatMapFactory;
 import enums.POITypes;
-import repository.POIRepository;
+import com.inctinctools.marathon2017.socmap.data.repository.POIRepository;
 import services.POIService;
 import services.POISourceService;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 public class POISeviceImpl implements POIService{
@@ -36,8 +33,8 @@ public class POISeviceImpl implements POIService{
         this.cityY2 = Double.parseDouble(properties.getProperty("cityY2"));
     }
 
-    public void loadAndStore() {
-       List<POI> list = sourceService.buildQuery(cityX1, cityY1, cityX2, cityY2);
+    public void loadAndStore(POITypes type) {
+       List<POI> list = sourceService.buildQuery(cityX1, cityY1, cityX2, cityY2, type);
        repository.save(list);
     }
 

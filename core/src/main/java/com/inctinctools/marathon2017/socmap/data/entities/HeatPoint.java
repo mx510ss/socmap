@@ -1,4 +1,4 @@
-package entities;
+package com.inctinctools.marathon2017.socmap.data.entities;
 
 import java.util.HashMap;
 import java.util.Map;
