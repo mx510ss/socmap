@@ -1,6 +1,6 @@
-package com.inctinctools.marathon2017.socmap.data.entities.factories;
+package com.inctinctools.marathon2017.socmap.core.entities.factories;
 
-import com.inctinctools.marathon2017.socmap.data.entities.HeatMap;
+import com.inctinctools.marathon2017.socmap.core.entities.HeatMap;
 
 import java.io.IOException;
 import java.io.InputStream;

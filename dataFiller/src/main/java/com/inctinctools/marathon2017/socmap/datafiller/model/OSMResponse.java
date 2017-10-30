@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResponseServer {
+public class OSMResponse {
     @SerializedName("version")
     private String mVersion;
     @SerializedName("elements")

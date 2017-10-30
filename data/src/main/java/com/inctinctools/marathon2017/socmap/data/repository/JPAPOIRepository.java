@@ -1,6 +1,6 @@
 package com.inctinctools.marathon2017.socmap.data.repository;
 
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,8 +1,9 @@
 package com.inctinctools.marathon2017.socmap.data.repository;
 
+import com.inctinctools.marathon2017.socmap.core.repository.POIRepository;
 import com.inctinctools.marathon2017.socmap.data.entities.JPAPOIEntity;
-import com.inctinctools.marathon2017.socmap.data.entities.POI;
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.entities.POI;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

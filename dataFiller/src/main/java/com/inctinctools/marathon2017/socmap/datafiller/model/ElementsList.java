@@ -1,15 +1,15 @@
 package com.inctinctools.marathon2017.socmap.datafiller.model;
 
-import com.inctinctools.marathon2017.socmap.data.entities.POI;
+import com.inctinctools.marathon2017.socmap.core.entities.POI;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ElementsList {
     private List<Element> list;
 
     public ElementsList(){
-        list = new LinkedList<Element>();
+        list = new ArrayList<Element>();
     }
 
     public List<Element> getList() {
@@ -21,7 +21,7 @@ public class ElementsList {
     }
 
     public List<POI> getListPOI(){
-        List<POI> poiList = new LinkedList<POI>();
+        List<POI> poiList = new ArrayList<POI>();
         for (Element el: list) {
             poiList.add(el.toModel());
         }

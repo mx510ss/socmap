@@ -1,13 +1,16 @@
 package com.inctinctools.marathon2017.socmap.datafiller.mapping;
 
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 
-public class Converter {
+public class TagResolver {
     private static Map<POITypes, List<String>> map = new Hashtable<POITypes, List<String>>();
     static {
-        map.put(POITypes.EDUCATION, Arrays.asList("university", "school", "kindergarten", "college"));
+        map.put(POITypes.EDUCATION, Arrays.asList("university"/*, "school", "kindergarten", "college"*/));
         map.put(POITypes.MEDICINE, Arrays.asList("hospital"));
         map.put(POITypes.SHOP, Arrays.asList("shop, mall"));
     }

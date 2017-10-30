@@ -1,7 +1,7 @@
-package com.inctinctools.marathon2017.socmap.data.repository;
+package com.inctinctools.marathon2017.socmap.core.repository;
 
-import com.inctinctools.marathon2017.socmap.data.entities.POI;
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.entities.POI;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 
 import java.util.Collection;
 import java.util.List;

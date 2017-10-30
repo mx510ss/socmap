@@ -1,4 +1,4 @@
-package com.inctinctools.marathon2017.socmap.data.entities;
+package com.inctinctools.marathon2017.socmap.core.entities;
 
 import java.util.LinkedList;
 import java.util.List;

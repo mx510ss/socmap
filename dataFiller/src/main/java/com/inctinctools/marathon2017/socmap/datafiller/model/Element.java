@@ -2,8 +2,8 @@ package com.inctinctools.marathon2017.socmap.datafiller.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.inctinctools.marathon2017.socmap.data.entities.POI;
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.entities.POI;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 
 import java.util.Map;
 
@@ -16,6 +16,8 @@ public class Element {
     private double mLat;
     @SerializedName("lon")
     private double mLon;
+    @SerializedName("center")
+    private Map<String, String> center;
     @SerializedName("tags")
     private Map<String, String> tags;
 
@@ -46,8 +48,13 @@ public class Element {
     public POI toModel(){
         POI poi = new POI();
         poi.setId(mId);
-        poi.setX(mLat);
-        poi.setY(mLon);
+        if(!mType.equals("way")) {
+            poi.setX(mLat);
+            poi.setY(mLon);
+        }else{
+            poi.setX(Double.parseDouble(center.get("lat")));
+            poi.setY(Double.parseDouble(center.get("lon")));
+        }
         poi.setName(tags.get("name"));
         poi.setObjectType(poiType);
         return poi;
@@ -56,4 +63,6 @@ public class Element {
     public void setPoiTypes(POITypes poiType) {
         this.poiType = poiType;
     }
+
+
 }

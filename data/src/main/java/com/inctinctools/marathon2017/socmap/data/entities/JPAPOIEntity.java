@@ -1,6 +1,7 @@
 package com.inctinctools.marathon2017.socmap.data.entities;
 
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.entities.POI;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 
 import javax.persistence.*;
 

@@ -1,13 +1,13 @@
-package services.servicesImpl;
+package com.inctinctools.marathon2017.socmap.core.services.servicesImpl;
 
-import com.inctinctools.marathon2017.socmap.data.entities.HeatMap;
-import com.inctinctools.marathon2017.socmap.data.entities.HeatPoint;
-import com.inctinctools.marathon2017.socmap.data.entities.POI;
-import com.inctinctools.marathon2017.socmap.data.entities.factories.DefaultHeatMapFactory;
-import enums.POITypes;
-import com.inctinctools.marathon2017.socmap.data.repository.POIRepository;
-import services.POIService;
-import services.POISourceService;
+import com.inctinctools.marathon2017.socmap.core.entities.HeatMap;
+import com.inctinctools.marathon2017.socmap.core.entities.HeatPoint;
+import com.inctinctools.marathon2017.socmap.core.entities.POI;
+import com.inctinctools.marathon2017.socmap.core.entities.factories.DefaultHeatMapFactory;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.repository.POIRepository;
+import com.inctinctools.marathon2017.socmap.core.services.POISourceService;
+import com.inctinctools.marathon2017.socmap.core.services.POIService;
 
 import java.io.InputStream;
 import java.util.List;
@@ -34,7 +34,7 @@ public class POISeviceImpl implements POIService{
     }
 
     public void loadAndStore(POITypes type) {
-       List<POI> list = sourceService.buildQuery(cityX1, cityY1, cityX2, cityY2, type);
+       List<POI> list = sourceService.getPOI(cityX1, cityY1, cityX2, cityY2, type);
        repository.save(list);
     }
 

@@ -1,7 +1,7 @@
-package com.inctinctools.marathon2017.socmap.data.entities;
+package com.inctinctools.marathon2017.socmap.core.entities;
 
 
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 
 public class POI {
 

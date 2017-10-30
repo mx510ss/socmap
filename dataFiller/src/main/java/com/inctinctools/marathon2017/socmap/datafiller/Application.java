@@ -1,17 +1,20 @@
 package com.inctinctools.marathon2017.socmap.datafiller;
 
-import com.inctinctools.marathon2017.socmap.data.entities.factories.DefaultHeatMapFactory;
-import com.inctinctools.marathon2017.socmap.data.repository.POIRepository;
-import enums.POITypes;
+import com.inctinctools.marathon2017.socmap.core.entities.factories.DefaultHeatMapFactory;
+import com.inctinctools.marathon2017.socmap.core.repository.POIRepository;
+import com.inctinctools.marathon2017.socmap.core.services.POIService;
+import com.inctinctools.marathon2017.socmap.core.services.POISourceService;
+import com.inctinctools.marathon2017.socmap.core.services.servicesImpl.POISeviceImpl;
+import com.inctinctools.marathon2017.socmap.datafiller.services.OSMSourceService;
+import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import services.POIService;
-import services.POISourceService;
-import services.servicesImpl.POISeviceImpl;
+
+import java.util.List;
 
 
 @SpringBootApplication
@@ -20,11 +23,10 @@ import services.servicesImpl.POISeviceImpl;
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        ApplicationContext context = SpringApplication.run(Application.class, args);
-        POIService poiService = context.getBean(POIService.class);
-        for (POITypes poi : POITypes.values())
-            poiService.loadAndStore(poi);
-
+         ApplicationContext context = SpringApplication.run(Application.class, args);
+         POIService poiService = context.getBean(POIService.class);
+         for (POITypes poi : POITypes.values())
+             poiService.loadAndStore(poi);
     }
 
     @Bean
