@@ -5,7 +5,6 @@ import com.inctinctools.marathon2017.socmap.core.repository.POIRepository;
 import com.inctinctools.marathon2017.socmap.core.services.POIService;
 import com.inctinctools.marathon2017.socmap.core.services.POISourceService;
 import com.inctinctools.marathon2017.socmap.core.services.servicesImpl.POISeviceImpl;
-import com.inctinctools.marathon2017.socmap.datafiller.services.OSMSourceService;
 import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
