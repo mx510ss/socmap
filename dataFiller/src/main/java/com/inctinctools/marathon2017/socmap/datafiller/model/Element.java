@@ -24,27 +24,6 @@ public class Element {
     @Expose(serialize = false, deserialize = false)
     private POITypes poiType;
 
-    public String getmType() {
-        return mType;
-    }
-
-    public long getmId() {
-        return mId;
-    }
-
-    public double getmLat() {
-        return mLat;
-    }
-
-    public double getmLon() {
-        return mLon;
-    }
-
-    public Map<String, String> getTags() {
-        return tags;
-    }
-
-
     public POI toModel(){
         POI poi = new POI();
         poi.setId(mId);

@@ -10,7 +10,7 @@ import java.util.Map;
 public class TagResolver {
     private static Map<POITypes, List<String>> map = new Hashtable<POITypes, List<String>>();
     static {
-        map.put(POITypes.EDUCATION, Arrays.asList("university"/*, "school", "kindergarten", "college"*/));
+        map.put(POITypes.EDUCATION, Arrays.asList("university", "school", "kindergarten", "college"));
         map.put(POITypes.MEDICINE, Arrays.asList("hospital"));
         map.put(POITypes.SHOP, Arrays.asList("shop, mall"));
     }

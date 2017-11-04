@@ -10,10 +10,6 @@ public class OSMResponse {
     @SerializedName("elements")
     private List<Element> elements;
 
-    public String getmVersion() {
-        return mVersion;
-    }
-
     public List<Element> getElements() {
         return elements;
     }

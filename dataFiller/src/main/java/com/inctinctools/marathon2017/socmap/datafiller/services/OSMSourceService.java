@@ -43,7 +43,7 @@ public class OSMSourceService implements POISourceService {
         return elementsList.getListPOI();
     }
 
-    public OSMResponse get(String query) throws UnsupportedEncodingException {
+    private OSMResponse get(String query) throws UnsupportedEncodingException {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(Api.OVERPASS_API)
                 .queryParam("data", query);
         HttpEntity<OSMResponse> response = rest.exchange(

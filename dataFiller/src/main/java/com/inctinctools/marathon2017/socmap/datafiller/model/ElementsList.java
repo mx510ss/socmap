@@ -12,10 +12,6 @@ public class ElementsList {
         list = new ArrayList<Element>();
     }
 
-    public List<Element> getList() {
-        return list;
-    }
-
     public boolean concatList(List<Element> list){
         return this.list.addAll(list);
     }
