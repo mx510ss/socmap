@@ -11,8 +11,8 @@ public class TagResolver {
     private static Map<POITypes, List<String>> map = new Hashtable<POITypes, List<String>>();
     static {
         map.put(POITypes.EDUCATION, Arrays.asList("university", "school", "kindergarten", "college"));
-        map.put(POITypes.MEDICINE, Arrays.asList("hospital"));
-        map.put(POITypes.SHOP, Arrays.asList("shop, mall"));
+        map.put(POITypes.MEDICINE, Arrays.asList("hospital", "pharmacy"));
+        map.put(POITypes.SHOP, Arrays.asList("supermarket, mall, convenience"));
     }
     public static List<String> getListTags(POITypes type){
         return map.get(type);
