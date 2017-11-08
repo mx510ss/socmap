@@ -18,7 +18,7 @@ public class Api {
     }
 
     private static String coordinate(double x1, double y1, double x2, double y2){
-        return String.format("(%s,%s,%s,%s)", x1,y1,x2,y2);
+        return String.format("(%s,%s,%s,%s)", y1,x1,y2,x2);
     }
     public static String buildRequestNode(String tag, double x1, double y1, double x2, double y2){
         return TYPE_JSON  +getNodeQuery(tag, coordinate(x1,y1,x2,y2))+ OUT_BODY + getWayQuery(tag, coordinate(x1,y1,x2,y2)) + OUT_CENTER;

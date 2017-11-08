@@ -6,15 +6,16 @@ import com.inctinctools.marathon2017.socmap.core.entities.POI;
 import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Component
+@Service
 public class JPAPOIAdapter implements POIRepository {
 
-    private final JPAPOIRepository repository;
+    private JPAPOIRepository repository;
 
     @Autowired
     public JPAPOIAdapter(JPAPOIRepository repository){
@@ -37,5 +38,6 @@ public class JPAPOIAdapter implements POIRepository {
             list.add( new JPAPOIEntity(i));
         }
         repository.save(list);
+        repository.flush();
     }
 }

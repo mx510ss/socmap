@@ -12,7 +12,7 @@ public class TagResolver {
     static {
         map.put(POITypes.EDUCATION, Arrays.asList("university", "school", "kindergarten", "college"));
         map.put(POITypes.MEDICINE, Arrays.asList("hospital", "pharmacy"));
-        map.put(POITypes.SHOP, Arrays.asList("supermarket, mall, convenience"));
+        map.put(POITypes.SHOP, Arrays.asList("supermarket", "mall", "convenience"));
     }
     public static List<String> getListTags(POITypes type){
         return map.get(type);

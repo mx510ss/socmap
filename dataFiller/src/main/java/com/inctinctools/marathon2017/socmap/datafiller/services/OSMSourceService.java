@@ -9,6 +9,7 @@ import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 import com.inctinctools.marathon2017.socmap.datafiller.model.OSMResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.inctinctools.marathon2017.socmap.core.services.POISourceService;
 import org.springframework.web.client.RestTemplate;
@@ -18,7 +19,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
-@Service
+@Component
 public class OSMSourceService implements POISourceService {
 
     private RestTemplate rest;

@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "POI")
+@Table(name = "poi")
 public class JPAPOIEntity {
 
     @Id

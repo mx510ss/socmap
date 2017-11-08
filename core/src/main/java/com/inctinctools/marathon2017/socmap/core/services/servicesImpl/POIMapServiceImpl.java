@@ -7,35 +7,23 @@ import com.inctinctools.marathon2017.socmap.core.entities.factories.DefaultHeatM
 import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 import com.inctinctools.marathon2017.socmap.core.repository.POIRepository;
 import com.inctinctools.marathon2017.socmap.core.services.POISourceService;
-import com.inctinctools.marathon2017.socmap.core.services.POIService;
+import com.inctinctools.marathon2017.socmap.core.services.POIMapService;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
-public class POISeviceImpl implements POIService{
+public class POIMapServiceImpl implements POIMapService {
 
     public double cityX1, cityX2, cityY1, cityY2;
     private final POIRepository repository;
-    private final POISourceService sourceService;
     private final DefaultHeatMapFactory factory;
 
-    public POISeviceImpl(POIRepository repository, POISourceService sourceService, DefaultHeatMapFactory factory) throws Exception {
+    public POIMapServiceImpl(POIRepository repository, DefaultHeatMapFactory factory ){
         this.repository = repository;
-        this.sourceService = sourceService;
         this.factory = factory;
-        Properties properties = new Properties();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");;
-        properties.load(inputStream);
-        this.cityX1 = Double.parseDouble(properties.getProperty("cityX1"));
-        this.cityX2 = Double.parseDouble(properties.getProperty("cityX2"));
-        this.cityY1 = Double.parseDouble(properties.getProperty("cityY1"));
-        this.cityY2 = Double.parseDouble(properties.getProperty("cityY2"));
-    }
-
-    public void loadAndStore(POITypes type) {
-       List<POI> list = sourceService.getPOI(cityX1, cityY1, cityX2, cityY2, type);
-       repository.save(list);
     }
 
     public HeatMap build(double x1, double x2, double y1, double y2, POITypes type) {

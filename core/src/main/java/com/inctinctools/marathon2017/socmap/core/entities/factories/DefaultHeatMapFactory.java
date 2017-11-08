@@ -14,7 +14,7 @@ public class DefaultHeatMapFactory {
     public DefaultHeatMapFactory () throws IOException {
         Properties properties = new Properties();
         InputStream inputStream;
-        inputStream = getClass().getClassLoader().getResourceAsStream("data.properties");
+        inputStream = getClass().getClassLoader().getResourceAsStream("socmap-default.properties");
         properties.load(inputStream);
         this.step = Double.parseDouble(properties.getProperty("step"));
         this.pointRadius = Double.parseDouble(properties.getProperty("radius"));
