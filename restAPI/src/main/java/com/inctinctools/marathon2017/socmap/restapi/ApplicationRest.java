@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+@SpringBootApplication(scanBasePackages = "com.inctinctools.marathon2017.socmap")
 @EntityScan(basePackages = "com.inctinctools.marathon2017.socmap.data.entities")
 @EnableJpaRepositories(basePackages = "com.inctinctools.marathon2017.socmap.data.repository")
-@SpringBootApplication(scanBasePackages = "com.inctinctools.marathon2017.socmap")
 @Configuration
 public class ApplicationRest {
     public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class ApplicationRest {
     }
 
     @Bean
-    public static POIMapService getPOIService(POIRepository repository) throws Exception {
+    public POIMapService getPOIService(POIRepository repository) throws Exception {
         return new POIMapServiceImpl(repository, new DefaultHeatMapFactory());
     }
 }

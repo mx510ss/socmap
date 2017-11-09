@@ -2,7 +2,7 @@ package com.inctinctools.marathon2017.socmap.datafiller.api;
 
 public class Api {
     //TODO adjust
-    public static final String OVERPASS_API = "http://www.overpass-api.de/api/interpreter";
+    public static final String OVERPASS_API = "https://overpass.kumi.systems/api/interpreter";
     private static final String TYPE_JSON = "[out:json];";
     private static final String OUT_CENTER = "out center;";
     private static final String OUT_BODY = "out body;";
@@ -18,7 +18,7 @@ public class Api {
     }
 
     private static String coordinate(double x1, double y1, double x2, double y2){
-        return String.format("(%s,%s,%s,%s)", y1,x1,y2,x2);
+        return String.format("(%s,%s,%s,%s)", x1,y1,x2,y2);
     }
     public static String buildRequestNode(String tag, double x1, double y1, double x2, double y2){
         return TYPE_JSON  +getNodeQuery(tag, coordinate(x1,y1,x2,y2))+ OUT_BODY + getWayQuery(tag, coordinate(x1,y1,x2,y2)) + OUT_CENTER;

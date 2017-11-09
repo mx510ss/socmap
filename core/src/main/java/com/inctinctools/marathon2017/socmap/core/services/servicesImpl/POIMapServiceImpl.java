@@ -17,7 +17,6 @@ import java.util.Properties;
 
 public class POIMapServiceImpl implements POIMapService {
 
-    public double cityX1, cityX2, cityY1, cityY2;
     private final POIRepository repository;
     private final DefaultHeatMapFactory factory;
 

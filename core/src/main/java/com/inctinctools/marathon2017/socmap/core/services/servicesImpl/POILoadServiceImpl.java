@@ -18,12 +18,10 @@ public class POILoadServiceImpl implements POILoadService {
     public double cityX1, cityX2, cityY1, cityY2;
     private final POIRepository repository;
     private final POISourceService sourceService;
-    private final DefaultHeatMapFactory factory;
 
-    public POILoadServiceImpl(POIRepository repository, POISourceService sourceService, DefaultHeatMapFactory factory) throws Exception {
+    public POILoadServiceImpl(POIRepository repository, POISourceService sourceService) throws Exception {
         this.repository = repository;
         this.sourceService = sourceService;
-        this.factory = factory;
         Properties properties = new Properties();
         InputStream inputStream = new FileInputStream(new File("socmap.properties"));
         properties.load(inputStream);

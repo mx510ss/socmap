@@ -34,7 +34,7 @@ public class Application {
 
     @Bean
     public POILoadService getPOIService(POIRepository repository, POISourceService sourceService) throws Exception {
-        return new POILoadServiceImpl(repository, sourceService, new DefaultHeatMapFactory());
+        return new POILoadServiceImpl(repository, sourceService);
     }
 
 }
