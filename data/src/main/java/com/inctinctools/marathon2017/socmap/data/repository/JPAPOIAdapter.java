@@ -38,6 +38,5 @@ public class JPAPOIAdapter implements POIRepository {
             list.add( new JPAPOIEntity(i));
         }
         repository.save(list);
-        repository.flush();
     }
 }

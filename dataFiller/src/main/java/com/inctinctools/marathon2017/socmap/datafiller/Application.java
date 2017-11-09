@@ -28,8 +28,6 @@ public class Application {
 
          for (POITypes poi : POITypes.values())
              poiService.loadAndStore(poi);
-
-        System.out.printf("");
     }
 
     @Bean
