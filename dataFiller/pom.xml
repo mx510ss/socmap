@@ -36,6 +36,10 @@
             <artifactId>spring-web</artifactId>
             <version>4.3.11.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

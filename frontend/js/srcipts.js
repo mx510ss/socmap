@@ -19,6 +19,17 @@ function setmap() {
         clickableIcons: false
     };
     map = new google.maps.Map(document.getElementById("map"), myOptions);
+    heatmap = new HeatmapOverlay(map, {
+            "radius": 30,
+            "maxOpacity": 2,
+            blur: .65,
+            "scaleRadius": false,
+            "useLocalExtrema": false,
+            latField: 'x',
+            lngField: 'y',
+            valueField: 'value'
+        }
+    );
     google.maps.event.addListener(map,"rightclick", function (event) {
         if (markermap1 && markermap2) {
             if (rectang) {
@@ -78,30 +89,12 @@ function setmap() {
             map.panTo(rectang.getBounds());
         }
     });
-
-
 }
 function setHeatData(data) {
-    heatmap = new HeatmapOverlay(map, {
-            "radius": 2,
-            "maxOpacity": 4,
-            "scaleRadius": true,
-            "useLocalExtrema": true,
-            latField: 'y',
-            lngField: 'x',
-            valueField: 'value'
-        }
-    );
-    var testData= data;
-    heatmap.setData(testData);
+    heatmap.setData(data);
 }
 function getData(x1, y1, x2, y2) {
-    //alert(x1 + " " + x2 + " " +y1 + " "+y2);
-    $.get('/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
-        dat = {
-            max: data.maxVal,
-            data: data.data
-        };
-        setHeatData(dat);
+    jQuery.get('/api/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
+        setHeatData(data);
     }, 'json');
 }
