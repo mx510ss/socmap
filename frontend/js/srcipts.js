@@ -1,4 +1,4 @@
-var tag = "ALL";
+var tag = "EDUCATION", zoom = 14;
 $(document).ready(function () {
     setmap();
 })
@@ -86,7 +86,7 @@ function setmap() {
     });
     google.maps.event.addListener(map,"zoom_changed", function (ev) {
         if(rectang){
-            map.panTo(rectang.getBounds());
+
         }
     });
 }
