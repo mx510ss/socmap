@@ -95,10 +95,9 @@ function setHeatData(data) {
     var testData= data;
     heatmap.setData(testData);
 }
-
 function getData(x1, y1, x2, y2) {
     //alert(x1 + " " + x2 + " " +y1 + " "+y2);
-    $.get('/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2}, function (data) {
+    $.get('/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
         dat = {
             max: data.maxVal,
             data: data.data
