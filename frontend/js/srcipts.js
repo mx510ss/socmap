@@ -92,11 +92,16 @@ function setHeatData(data) {
             valueField: 'value'
         }
     );
-    var testData = data;
+    var testData= data;
     heatmap.setData(testData);
 }
-
 function getData(x1, y1, x2, y2) {
     //alert(x1 + " " + x2 + " " +y1 + " "+y2);
-    $.get('/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2}, setHeatData(data), 'json');
+    $.get('/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
+        dat = {
+            max: data.maxVal,
+            data: data.data
+        };
+        setHeatData(dat);
+    }, 'json');
 }
