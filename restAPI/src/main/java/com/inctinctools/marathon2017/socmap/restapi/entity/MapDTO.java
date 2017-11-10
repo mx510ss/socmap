@@ -1,7 +1,8 @@
 package com.inctinctools.marathon2017.socmap.restapi.entity;
 
-import com.inctinctools.marathon2017.socmap.data.entities.HeatMap;
-import com.inctinctools.marathon2017.socmap.data.entities.HeatPoint;
+
+import com.inctinctools.marathon2017.socmap.core.entities.HeatMap;
+import com.inctinctools.marathon2017.socmap.core.entities.HeatPoint;
 
 import java.util.ArrayList;
 import java.util.List;
