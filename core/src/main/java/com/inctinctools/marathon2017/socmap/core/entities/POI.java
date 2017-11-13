@@ -5,7 +5,6 @@ import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
 
 public class POI {
 
-
 	private long id;
 	
 	private String name;
@@ -65,6 +64,4 @@ public class POI {
 	public void setObjectType(POITypes objectType) {
 		this.objectType = objectType;
 	}
-
-
 }

@@ -2,6 +2,7 @@ package com.inctinctools.marathon2017.socmap.data.entities;
 
 import com.inctinctools.marathon2017.socmap.core.entities.POI;
 import com.inctinctools.marathon2017.socmap.core.enums.POITypes;
+import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 
@@ -31,9 +32,10 @@ public class JPAPOIEntity {
     private String disctription;
 
 
-    protected JPAPOIEntity(){}
+    protected JPAPOIEntity() {
+    }
 
-    public JPAPOIEntity (POI poi){
+    public JPAPOIEntity(POI poi) {
         this.id = poi.getId();
         this.name = poi.getName();
         this.x = poi.getX();
@@ -41,13 +43,13 @@ public class JPAPOIEntity {
         this.type = poi.getObjectType();
     }
 
-    public POI toModel() {
-       POI poi = new POI();
-       poi.setId(id);
-       poi.setName(name);
-       poi.setX(x);
-       poi.setY(y);
-       poi.setObjectType(type);
-       return poi;
+    public @NotNull POI toModel() {
+        POI poi = new POI();
+        poi.setId(id);
+        poi.setName(name);
+        poi.setX(x);
+        poi.setY(y);
+        poi.setObjectType(type);
+        return poi;
     }
 }
