@@ -1,4 +1,4 @@
-var tag = "EDUCATION", zoom = 14, radius = 20, dat;
+var tag = "EDUCATION", zoom = 14, radius = 20, dat, mxx;
 $(document).ready(function () {
     setmap();
 })
@@ -17,7 +17,7 @@ function setmap() {
         draggable: true,
         scrollwheel: false,
         clickableIcons: false,
-        zoomControl: false
+        zoomControl: true
     };
     map = new google.maps.Map(document.getElementById("map"), myOptions);
     heatmap = new HeatmapOverlay(map, {
@@ -90,30 +90,43 @@ function setmap() {
         var local_zoom = map.getZoom();
         console.info(local_zoom + " " + zoom);
         if(local_zoom > zoom){
-            radius += 10;
+            radius *= 2;
             zoom = local_zoom;
         }
         if(local_zoom < zoom){
-            radius -= 10;
+            radius /= 2;
             zoom = local_zoom;
         }
         console.info(zoom + " " + radius);
+        cfg = {
+            "radius": radius,
+            "maxOpacity": 2,
+            blur: .85,
+            "scaleRadius": false,
+            "useLocalExtrema": false,
+            latField: 'x',
+            lngField: 'y',
+            valueField: 'value'
+        };
+        heatmap.cfg = cfg;
     });
 }
 function setInfo() {
-    document.getElementById('inform').innerHTML = "Max value: "+dat.max + "\n Tag: " + tag +"\n";
+    document.getElementById('inform').innerHTML = "Max value: "+mxx + "\n Tag: " + tag +"\n";
 }
 function setHeatData(data) {
-
     mx = data.max;
-    if(data.max == 0){
-       mx = 8;
+    mxx = data.max;
+    if(data.max <= 5){
+       mx = 5;
+       if(data.max == 1){
+           mx  = 2;
+       }
     }
     dat = {
         max: mx,
         data: data.data
     };
-    console.info(dat.max + " " + data.max);
     heatmap.setData(dat);
     setInfo();
 }
