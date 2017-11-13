@@ -12,26 +12,21 @@
         width: 100%;
         position: absolute; top: 0; left: 0;
     }
-</style>
-<style>
-    #htmp{
-        height: 400px;
-        width: 400px;
+    #button{
+        height: 40px;
+        width: 200px;
+        position: absolute;top: 50px;left: 0px;
     }
 </style>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzX6bULFooinV09j91GgEpglm7kV30028"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script type="text/javascript">
-        //Ajax call to backend
-        //draw heat map using heatmap.js
-</script>
 <script type="text/javascript" src="js/heatmap.js"></script>
 <script src="js/gmaps-heatmap.js"></script>
 <script type="text/javascript" src="js/srcipts.js"></script>
-
+<script type="text/javascript" src="js/markers.js"></script>
 <body>
     <div id="map"></div>
     <div class="btn-group">
@@ -43,12 +38,9 @@
             <button class="dropdown-item" name = "education" href="#" onclick= "setMenuTitle(this)">EDUCATION</button>
             <button class="dropdown-item" name = "medicine" href="#" onclick="setMenuTitle(this)">MEDICINE</button>
             <button class="dropdown-item" name = "shop" href="#" onclick="setMenuTitle(this)">SHOP</button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item" name = "all" href="#" onclick="setMenuTitle(this)">*</button>
         </div>
     </div>
-    <div onclick="loadHeatMap()"></div>
-
+    <button type="button" class="btn btn-secondary" id="button" onclick="addMarkers(heatmap.getMap())">Get social objects</button>
     <p>
         <button class="btn btn-primary" type="button" style=" position: absolute; bottom: 0; left: 0;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Map information
@@ -56,8 +48,9 @@
     </p>
 
     <div class="collapse" id="collapseExample" style="width: 140px; height: 100%; position: absolute;  left: 10px; bottom: 40px;">
-        <div class="card card-body">
-            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        <div class="card card-body" id="inform">
+            max Value: ?
+            Tag: EDUCATION
         </div>
     </div>
     <div id="htmp"></div>

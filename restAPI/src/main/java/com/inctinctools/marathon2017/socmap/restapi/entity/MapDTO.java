@@ -9,12 +9,12 @@ import java.util.List;
 
 public class MapDTO {
 
-    private int maxVal;
+    private int max;
 
     private List<PointData> data;
 
     public MapDTO(HeatMap map) {
-        this.maxVal = map.getMaxValue();
+        this.max = map.getMaxValue();
         List<PointData> list = new ArrayList<PointData>(map.getMap().size());
         for(HeatPoint i : map.getMap()){
             int objectCount = Integer.parseInt(i.getAttributes().get("count").toString());
@@ -23,12 +23,12 @@ public class MapDTO {
         this.data = list;
     }
 
-    public int getMaxVal() {
-        return maxVal;
+    public int getMax() {
+        return max;
     }
 
-    public void setMaxVal(int maxVal) {
-        this.maxVal = maxVal;
+    public void setMax(int max) {
+        this.max = max;
     }
 
     public List<PointData> getData() {

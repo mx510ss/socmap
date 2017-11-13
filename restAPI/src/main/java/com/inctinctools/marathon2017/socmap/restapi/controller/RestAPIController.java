@@ -8,10 +8,7 @@ import com.inctinctools.marathon2017.socmap.restapi.entity.MapDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -26,6 +23,13 @@ public class RestAPIController {
                                      @RequestParam("type") POITypes type){
         HeatMap map = service.build(x1,x2,y1,y2, type);
         return new ResponseEntity( new MapDTO(map), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/POIs", method = RequestMethod.GET)
+    public ResponseEntity getListOfPOI(@RequestParam("x1") double x1, @RequestParam("y1") double y1,
+                                       @RequestParam("x2") double x2, @RequestParam("y2") double y2,
+                                       @RequestParam("type") POITypes type){
+        return new ResponseEntity(service.getListOfPOI(x1, y1, x2, y2, type), HttpStatus.OK);
     }
 
 }
