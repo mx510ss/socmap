@@ -1,4 +1,4 @@
-var tag = "EDUCATION", zoom = 14, radius = 20, dat, mxx;
+var tag = "EDUCATION", zoom = 14, radius = 26, dat, mxx;
 $(document).ready(function () {
     setmap();
 })
@@ -101,7 +101,7 @@ function setmap() {
         cfg = {
             "radius": radius,
             "maxOpacity": 2,
-            blur: .85,
+            blur: .999,
             "scaleRadius": false,
             "useLocalExtrema": false,
             latField: 'x',
@@ -118,10 +118,7 @@ function setHeatData(data) {
     mx = data.max;
     mxx = data.max;
     if(data.max <= 5){
-       mx = 5;
-       if(data.max == 1){
-           mx  = 2;
-       }
+       mx = 7;
     }
     dat = {
         max: mx,
