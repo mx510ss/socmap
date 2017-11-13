@@ -34,4 +34,8 @@ public class POIMapServiceImpl implements POIMapService {
         }
         return map;
     }
+
+    public List<POI> getListOfPOI(double x1, double x2, double y1, double y2, POITypes type) {
+        return repository.getByBounds(x1, x2, y1, y2, type);
+    }
 }

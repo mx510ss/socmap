@@ -1,4 +1,4 @@
-var tag = "ALL";
+var tag = "EDUCATION", zoom = 14, radius = 26, dat, mxx, rectang, x1, x2, y1,y2;
 $(document).ready(function () {
     setmap();
 })
@@ -9,17 +9,31 @@ function setMenuTitle(obj) {
 }
 
 function setmap() {
-    var markermap1, markermap2, rectang;
+    var markermap1, markermap2;
     var myLatlng = new google.maps.LatLng(53.676, 23.819);
     var myOptions = {
-        zoom: 14,
+        zoom: zoom,
         center: myLatlng,
         draggable: true,
-        scrollwheel: true,
-        clickableIcons: false
+        scrollwheel: false,
+        clickableIcons: false,
+        zoomControl: true
     };
     map = new google.maps.Map(document.getElementById("map"), myOptions);
+    heatmap = new HeatmapOverlay(map, {
+            "radius": radius,
+            "maxOpacity": 2,
+            blur: .85,
+            "scaleRadius": false,
+            "useLocalExtrema": false,
+            latField: 'x',
+            lngField: 'y',
+            valueField: 'value'
+        }
+    );
+    heatmap.setData({max:8, data:[{x: 0, y: 0, value: 8}]});
     google.maps.event.addListener(map,"rightclick", function (event) {
+        var newIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         if (markermap1 && markermap2) {
             if (rectang) {
                 rectang.setMap(null);
@@ -38,7 +52,8 @@ function setmap() {
             markermap2 = new google.maps.Marker({
                 position: event.latLng,
                 map: map,
-                title: "1"
+                title: "1",
+                icon: newIcon
             });
             nor = Math.max(markermap2.position.lat(), markermap1.position.lat());
             sth = Math.min(markermap2.position.lat(), markermap1.position.lat());
@@ -61,7 +76,11 @@ function setmap() {
                 }
             });
             center = new google.maps.LatLng({lat: centerlat, lng: centerlng});
-
+            x1 = sth;
+            x2 = nor;
+            y1 = wst;
+            y2 = east;
+            clearMarkers();
             getData(sth, wst, nor, east);
             map.panTo(center);
         }
@@ -69,39 +88,57 @@ function setmap() {
             markermap1 = new google.maps.Marker({
                 position: event.latLng,
                 map: map,
-                title: "2"
+                title: "2",
+                icon: newIcon
             });
         }
     });
     google.maps.event.addListener(map,"zoom_changed", function (ev) {
-        if(rectang){
-            map.panTo(rectang.getBounds());
+        var local_zoom = map.getZoom();
+        console.info(local_zoom + " " + zoom);
+        if(local_zoom > zoom){
+            radius *= 2;
+            zoom = local_zoom;
         }
+        if(local_zoom < zoom){
+            radius /= 2;
+            zoom = local_zoom;
+        }
+        console.info(zoom + " " + radius);
+        cfg = {
+            "radius": radius,
+            "maxOpacity": 2,
+            blur: .999,
+            "scaleRadius": false,
+            "useLocalExtrema": false,
+            latField: 'x',
+            lngField: 'y',
+            valueField: 'value'
+        };
+        heatmap.cfg = cfg;
     });
-
-
+}
+function setInfo() {
+    document.getElementById('inform').innerHTML = "Max value: "+mxx + "\n Tag: " + tag +"\n";
 }
 function setHeatData(data) {
-    heatmap = new HeatmapOverlay(map, {
-            "radius": 2,
-            "maxOpacity": 4,
-            "scaleRadius": true,
-            "useLocalExtrema": true,
-            latField: 'y',
-            lngField: 'x',
-            valueField: 'value'
-        }
-    );
-    var testData= data;
-    heatmap.setData(testData);
+    mx = data.max;
+    mxx = data.max;
+    if(data.max <= 5){
+       mx = 7;
+    }
+    dat = {
+        max: mx,
+        data: data.data
+    };
+    heatmap.setData(dat);
+    setInfo();
 }
 function getData(x1, y1, x2, y2) {
-    //alert(x1 + " " + x2 + " " +y1 + " "+y2);
-    $.get('/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
-        dat = {
-            max: data.maxVal,
-            data: data.data
-        };
-        setHeatData(dat);
+    jQuery.get('/api/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
+        setHeatData(data);
+    }, 'json');
+    jQuery.get('/api/POIs', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
+        markerDat = data;
     }, 'json');
 }
