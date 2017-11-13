@@ -25,4 +25,11 @@ public class RestAPIController {
         return new ResponseEntity( new MapDTO(map), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/POIs", method = RequestMethod.GET)
+    public ResponseEntity getListOfPOI(@RequestParam("x1") double x1, @RequestParam("y1") double y1,
+                                       @RequestParam("x2") double x2, @RequestParam("y2") double y2,
+                                       @RequestParam("type") POITypes type){
+        return new ResponseEntity(service.getListOfPOI(x1, y1, x2, y2, type), HttpStatus.OK);
+    }
+
 }

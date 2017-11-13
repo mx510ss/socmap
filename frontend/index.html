@@ -12,11 +12,10 @@
         width: 100%;
         position: absolute; top: 0; left: 0;
     }
-</style>
-<style>
-    #htmp{
-        height: 400px;
-        width: 400px;
+    #button{
+        height: 40px;
+        width: 200px;
+        position: absolute;top: 50px;left: 0px;
     }
 </style>
 
@@ -27,7 +26,7 @@
 <script type="text/javascript" src="js/heatmap.js"></script>
 <script src="js/gmaps-heatmap.js"></script>
 <script type="text/javascript" src="js/srcipts.js"></script>
-
+<script type="text/javascript" src="js/markers.js"></script>
 <body>
     <div id="map"></div>
     <div class="btn-group">
@@ -41,6 +40,7 @@
             <button class="dropdown-item" name = "shop" href="#" onclick="setMenuTitle(this)">SHOP</button>
         </div>
     </div>
+    <button type="button" class="btn btn-secondary" id="button" onclick="addMarkers(heatmap.getMap())">Get social objects</button>
     <p>
         <button class="btn btn-primary" type="button" style=" position: absolute; bottom: 0; left: 0;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Map information

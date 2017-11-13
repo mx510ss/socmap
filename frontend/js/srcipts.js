@@ -1,4 +1,4 @@
-var tag = "EDUCATION", zoom = 14, radius = 26, dat, mxx;
+var tag = "EDUCATION", zoom = 14, radius = 26, dat, mxx, rectang, x1, x2, y1,y2;
 $(document).ready(function () {
     setmap();
 })
@@ -9,7 +9,7 @@ function setMenuTitle(obj) {
 }
 
 function setmap() {
-    var markermap1, markermap2, rectang;
+    var markermap1, markermap2;
     var myLatlng = new google.maps.LatLng(53.676, 23.819);
     var myOptions = {
         zoom: zoom,
@@ -33,6 +33,7 @@ function setmap() {
     );
     heatmap.setData({max:8, data:[{x: 0, y: 0, value: 8}]});
     google.maps.event.addListener(map,"rightclick", function (event) {
+        var newIcon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
         if (markermap1 && markermap2) {
             if (rectang) {
                 rectang.setMap(null);
@@ -51,7 +52,8 @@ function setmap() {
             markermap2 = new google.maps.Marker({
                 position: event.latLng,
                 map: map,
-                title: "1"
+                title: "1",
+                icon: newIcon
             });
             nor = Math.max(markermap2.position.lat(), markermap1.position.lat());
             sth = Math.min(markermap2.position.lat(), markermap1.position.lat());
@@ -74,7 +76,11 @@ function setmap() {
                 }
             });
             center = new google.maps.LatLng({lat: centerlat, lng: centerlng});
-
+            x1 = sth;
+            x2 = nor;
+            y1 = wst;
+            y2 = east;
+            clearMarkers();
             getData(sth, wst, nor, east);
             map.panTo(center);
         }
@@ -82,7 +88,8 @@ function setmap() {
             markermap1 = new google.maps.Marker({
                 position: event.latLng,
                 map: map,
-                title: "2"
+                title: "2",
+                icon: newIcon
             });
         }
     });
@@ -130,5 +137,8 @@ function setHeatData(data) {
 function getData(x1, y1, x2, y2) {
     jQuery.get('/api/heatmap', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
         setHeatData(data);
+    }, 'json');
+    jQuery.get('/api/POIs', { x1: x1, y1: y1, x2: x2, y2: y2, type: tag}, function (data) {
+        markerDat = data;
     }, 'json');
 }
