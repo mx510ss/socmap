@@ -31,6 +31,7 @@ function setmap() {
             valueField: 'value'
         }
     );
+    heatmap.setData({max:8, data:[{x: 0, y: 0, value: 8}]});
     google.maps.event.addListener(map,"rightclick", function (event) {
         if (markermap1 && markermap2) {
             if (rectang) {
@@ -103,8 +104,13 @@ function setInfo() {
     document.getElementById('inform').innerHTML = "Max value: "+dat.max + "\n Tag: " + tag +"\n";
 }
 function setHeatData(data) {
+
+    mx = data.max;
+    if(data.max == 0){
+       mx = 8;
+    }
     dat = {
-        max: data.max,
+        max: mx,
         data: data.data
     };
     console.info(dat.max + " " + data.max);
