@@ -188,6 +188,17 @@ var Store = (function StoreClosure() {
       this._coordinator.emit('renderall', this._getInternalData());
       return this;
     },
+    resetRadius: function(radius) {
+        if (radius) {
+            this._cfgRadius = radius;
+            var radi = this._radi;
+            for (var x in radi) {
+                for (var y in radi[x]) {
+                    radi[x][y] = radius;
+                }
+            }
+        } // end if
+    },
     setCoordinator: function(coordinator) {
       this._coordinator = coordinator;
     },
@@ -677,10 +688,11 @@ var Heatmap = (function HeatmapClosure() {
       return this;
     },
     configure: function(config) {
-      this._config = Util.merge(this._config, config);
-      this._renderer.updateConfig(this._config);
-      this._coordinator.emit('renderall', this._store._getInternalData());
-      return this;
+        this._config = Util.merge(this._config, config);
+        this._renderer.updateConfig(this._config);
+        this._store.resetRadius(config["radius"]); // reset radius
+        this._coordinator.emit('renderall', this._store._getInternalData());
+        return this;
     },
     repaint: function() {
       this._coordinator.emit('renderall', this._store._getInternalData());
